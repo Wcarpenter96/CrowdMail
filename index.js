@@ -5,7 +5,7 @@ const app = express();
 // "get" is the method (associated with an intent)
 // '/' is the route
 app.get('/', (req,res)=> {
-    res.send({hi:'there'});
+    res.send({hello:'world'});
 });
 
 const PORT  = process.env.PORT || 5000
