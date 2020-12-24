@@ -26,5 +26,12 @@
     "passport-google-oauth20": "^2.0.0",
     "sendgrid": "^5.2.3",
     "stripe": "^8.127.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/node": "^7.12.10",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.12.11"
   }
 }
