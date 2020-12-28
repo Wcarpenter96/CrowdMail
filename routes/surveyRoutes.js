@@ -6,6 +6,7 @@ const requireLogin = require("../middlewares/requireLogin");
 const requireCredits = require("../middlewares/requireCredits");
 const Mailer = require("../services/Mailer");
 const surveyTemplate = require("../services/emailTemplates/surveyTemplate");
+const { send } = require("process");
 
 const Survey = mongoose.model("surveys");
 
@@ -39,9 +40,11 @@ module.exports = (app) => {
     console.log("survey:", survey);
 
     const mailer = new Mailer(survey, surveyTemplate(survey));
+    console.log(mailer)
 
     try {
-      await mailer.send();
+      var send_mail = await mailer.send();
+      console.log('send_mail', send_mail)
       console.log("mailer sent!");
       await survey.save();
       console.log("survey saved!");
