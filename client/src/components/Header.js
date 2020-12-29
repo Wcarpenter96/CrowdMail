@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Payments from "./Payments";
+import colors from '../utils/colors'
+
 
 class Header extends Component {
   renderContent() {
@@ -30,16 +32,18 @@ class Header extends Component {
   }
   render() {
     return (
-      <nav>
-        <div className="nav-wrapper">
-          <Link
+      <nav className={colors.secondary} role="navigation">
+        <div className="nav-wrapper container">
+          <Link id="logo-container"
             to={this.props.auth ? "/surveys" : "/"}
             className="left brand-logo"
           >
-            Test
+            Crowdmail
           </Link>
-          <ul className="right">{this.renderContent()}</ul>
-        </div>
+          <ul className="right hide-on-med-and-down">{this.renderContent()}</ul>
+          <ul id="nav-mobile" className="sidenav">{this.renderContent()}</ul>
+          <a href="#" data-target="nav-mobile" className="right sidenav-trigger"><i className="material-icons">menu</i></a>
+          </div>
       </nav>
     );
   }
