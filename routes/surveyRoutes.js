@@ -23,9 +23,7 @@ module.exports = (app) => {
   });
 
   app.post("/api/surveys", requireLogin, requireCredits, async (req, res) => {
-    console.log("survey route hit!");
     const { title, subject, body, recipients } = req.body;
-    console.log({ title, subject, body, recipients });
     const survey = new Survey({
       title,
       subject,
@@ -37,20 +35,14 @@ module.exports = (app) => {
       dateSent: Date.now(),
     });
 
-    console.log("survey:", survey);
 
     const mailer = new Mailer(survey, surveyTemplate(survey));
-    console.log(mailer)
 
     try {
       var send_mail = await mailer.send();
-      console.log('send_mail', send_mail)
-      console.log("mailer sent!");
       await survey.save();
-      console.log("survey saved!");
       req.user.credits -= 1;
       const user = await req.user.save();
-      console.log("user saved!");
       res.send(user);
     } catch (err) {
       res.status(422).send(err);
