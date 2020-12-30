@@ -1,6 +1,7 @@
 import axios from "axios";
 import { FETCH_USER } from "./types";
 import { FETCH_SURVEYS } from "./types";
+import { MOBILE } from "./types";
 
 export const fetchUser = () => async (dispatch) => {
   const res = await axios.get("/api/current_user");
@@ -22,3 +23,8 @@ export const submitSurvey = (values, history) => async (dispatch) => {
   history.push("/surveys");
   dispatch({ type: FETCH_USER, payload: res.data });
 };
+
+export const setMobileOpen = (mobileOpen) => (dispatch) => {
+  dispatch({ type: MOBILE, payload: !mobileOpen });
+};
+

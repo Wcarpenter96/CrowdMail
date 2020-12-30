@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
 import { fetchSurveys } from "../../actions";
 import colors from "../../utils/colors";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
@@ -19,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SurveyList = () => {
+const SurveyPage = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -38,4 +37,4 @@ const SurveyList = () => {
   });
 };
 
-export default SurveyList;
+export default SurveyPage;

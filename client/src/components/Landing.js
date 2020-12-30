@@ -1,8 +1,11 @@
 import React from "react";
 import colors from '../utils/colors'
+import Header from "./Header";
 
 const Landing = () => {
   return (
+    <div>
+    <Header />
     <div className="section no-pad-bot" id="index-banner">
     <div className="container">
       <br/><br/>
@@ -16,7 +19,7 @@ const Landing = () => {
       <br/><br/>
     </div>
   </div>
-
+  </div>
   
   );
 };

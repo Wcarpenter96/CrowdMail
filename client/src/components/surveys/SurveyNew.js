@@ -1,30 +1,50 @@
 // SurveyNew shows SurveyForm and SurveyFormReview
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { reduxForm } from "redux-form";
 import SurveyForm from "./SurveyForm";
 import SurveyFormReview from "./SurveyFormReview";
+import { makeStyles } from "@material-ui/core/styles";
+import Header from "../Header";
 
-class SurveyNew extends Component {
-  state = { showFormReview: false };
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(3),
+    paddingTop: "90px",
+  },
+}));
 
-  renderContent() {
-    if (this.state.showFormReview) {
-      return (
-        <SurveyFormReview
-          onCancel={() => this.setState({ showFormReview: false })}
-        />
-      );
-    }
+const SurveyNew = () => {
+  const classes = useStyles();
+  const [showFormReview, setShowFormReview] = useState(false);
+
+  if (showFormReview) {
     return (
-      <SurveyForm
-        onSurveySubmit={() => this.setState({ showFormReview: true })}
-      />
+      <div className={classes.root}>
+        <Header drawer />
+        <div className={classes.content}>
+          <SurveyFormReview
+            onCancel={() => setShowFormReview(false)}
+          />
+        </div>
+      </div>
+    );
+  } else {
+    return (
+      <div className={classes.root}>
+           <Header />
+        <div className={classes.content}>
+          <SurveyForm
+            onSurveySubmit={() => setShowFormReview(true)}
+          />
+        </div>
+      </div>
     );
   }
-  render() {
-    return <div>{this.renderContent()}</div>;
-  }
-}
+};
 
 export default reduxForm({
   form: "surveyForm",

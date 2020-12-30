@@ -1,6 +1,6 @@
 const colors = { 
-    primary: "orange", 
-    secondary: "light-blue lighten-1" 
+    primary: "green", 
+    secondary: "white" 
 };
 
 export default colors
