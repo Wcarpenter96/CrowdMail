@@ -1,27 +1,23 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+
+import {
+  AppBar,
+  Toolbar,
+  Hidden,
+  Typography,
+  IconButton,
+  Menu,
+  MenuItem,
+} from "@material-ui/core";
+import { AccountCircle } from "@material-ui/icons";
+import MenuIcon from "@material-ui/icons/Menu";
+
 import Payments from "./Payments";
 import colors from "../utils/colors";
-import { withStyles } from "@material-ui/core/styles";
-import { compose } from "redux";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Hidden from "@material-ui/core/Hidden";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import Switch from "@material-ui/core/Switch";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormGroup from "@material-ui/core/FormGroup";
-import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
 import { setMobileOpen } from "../actions";
-import { createMuiTheme } from "@material-ui/core/styles";
 
 const drawerWidth = 240;
 
@@ -37,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: colors.secondary,
   },
   appBarFull: {
-    background: colors.secondary
+    background: colors.secondary,
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -73,7 +69,7 @@ const Header = (props) => {
 
   return (
     <AppBar
-    light
+      light
       position="fixed"
       className={props.drawer ? classes.appBarDrawer : classes.appBarFull}
       style={{ background: colors.secondary }}

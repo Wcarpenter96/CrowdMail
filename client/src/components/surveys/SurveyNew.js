@@ -1,10 +1,12 @@
 // SurveyNew shows SurveyForm and SurveyFormReview
 import React, { useState } from "react";
 import { reduxForm } from "redux-form";
+
 import SurveyForm from "./SurveyForm";
 import SurveyFormReview from "./SurveyFormReview";
-import { makeStyles } from "@material-ui/core/styles";
 import Header from "../Header";
+
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {

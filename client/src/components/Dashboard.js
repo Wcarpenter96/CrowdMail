@@ -1,17 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 import SurveyList from "./surveys/SurveyList";
 import ResponsiveDrawer from "./Drawer";
 import colors from "../utils/colors";
-import IconButton from "@material-ui/core/IconButton";
-import AddCircleIcon from "@material-ui/icons/AddCircle";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Header from "./Header";
-import Grid from '@material-ui/core/Grid';
-import Typography from "@material-ui/core/Typography";
-import Divider from '@material-ui/core/Divider';
 
-
+import { Grid, Typography, Divider, IconButton  } from '@material-ui/core';
+import AddCircleIcon from "@material-ui/icons/AddCircle";
+import { makeStyles } from "@material-ui/core/styles";
 
 const drawerWidth = 240;
 
@@ -45,9 +42,9 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: "90px",
   },
   buttonRight: {
-    position: "sticky",
-    textAlign: "right",
+    position: "fixed",
     bottom: 0,
+    right: 0
   },
   addSurvey: {
     color: colors.primary,
