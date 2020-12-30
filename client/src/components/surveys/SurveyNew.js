@@ -24,7 +24,7 @@ const SurveyNew = () => {
   if (showFormReview) {
     return (
       <div className={classes.root}>
-        <Header drawer />
+        <Header  />
         <div className={classes.content}>
           <SurveyFormReview
             onCancel={() => setShowFormReview(false)}
