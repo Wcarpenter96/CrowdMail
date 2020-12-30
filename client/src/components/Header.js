@@ -42,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: theme.spacing(2),
     marginLeft: theme.spacing(2),
+    color: colors.primary,
   },
 
   title: {
@@ -111,7 +112,7 @@ const Header = (props) => {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleMenu}
-              color="inherit"
+              color={colors.primary}
             >
               <AccountCircle />
             </IconButton>
