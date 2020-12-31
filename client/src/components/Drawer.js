@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { setMobileOpen } from "../actions";
 
@@ -11,6 +12,7 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  Typography,
 } from "@material-ui/core";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
@@ -63,25 +65,41 @@ function ResponsiveDrawer(props) {
       <div className={classes.toolbar} />
       <Divider />
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+        <ListItem button>
+        <ListItemText>
+            <Typography color="primary" variant="h6">Dashboard</Typography>
+          </ListItemText>
+        </ListItem>
+        <Link to="/surveys/new" style={{padding:"0px"}}>
+        <ListItem button >
+        <ListItemText>
+            <Typography color="primary" >Create New</Typography>
+          </ListItemText>
+        </ListItem>
+        </Link>
+        <ListItem button>
+          <ListItemText>
+            <Typography color="error" >Drafts (coming soon!)</Typography>
+          </ListItemText>
+        </ListItem>
       </List>
       <Divider />
       <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+        <ListItem button>
+        <ListItemText>
+            <Typography variant="h6" color="secondary">My Profile</Typography>
+          </ListItemText>
+        </ListItem >
+        <ListItem button >
+        <ListItemText>
+            <Typography color="secondary">Advanced Settings</Typography>
+          </ListItemText>
+        </ListItem>
+        <ListItem button component="a" href="/api/logout">
+        <ListItemText>
+            <Typography color="secondary">Logout</Typography>
+          </ListItemText>
+        </ListItem>
       </List>
     </div>
   );
