@@ -18,7 +18,6 @@ import {
 import { AccountCircle } from "@material-ui/icons";
 import MenuIcon from "@material-ui/icons/Menu";
 
-
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -29,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("sm")]: {
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
-    }
+    },
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -37,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
-  }
+  },
 }));
 
 const Header = (props) => {
@@ -62,7 +61,7 @@ const Header = (props) => {
 
   return (
     <AppBar
-      color = "white"
+      color="white"
       position="fixed"
       className={props.drawer ? classes.appBarDrawer : classes.appBarFull}
     >
@@ -80,17 +79,23 @@ const Header = (props) => {
             </IconButton>
           </Hidden>
         )}
-          <Link 
-            className={classes.title}
-            id="logo-container"
-            to={auth ? "/surveys" : "/"}
-          >
-            <Typography color="primary" variant="h5" className={classes.title} >Crowdmail</Typography>
-          </Link>
+        <Link
+          className={classes.title}
+          id="logo-container"
+          to={auth ? "/surveys" : "/"}
+        >
+          <Typography color="primary" variant="h5" className={classes.title}>
+            Crowdmail
+          </Typography>
+        </Link>
         {auth && (
           <div>
             <Payments className={classes.menuButton} />
-            <Typography className={classes.menuButton} color="primary" variant="button">
+            <Typography
+              className={classes.menuButton}
+              color="primary"
+              variant="button"
+            >
               Credits: {auth.credits}
             </Typography>
             <IconButton
@@ -117,9 +122,15 @@ const Header = (props) => {
               open={open}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}><Typography color="textPrimary" >Profile</Typography></MenuItem>
               <MenuItem onClick={handleClose}>
-                <a href="/api/logout"><Typography color="textPrimary">Logout</Typography></a>
+                <Link to="/profile">
+                  <Typography color="primary">Profile</Typography>
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <a href="/api/logout">
+                  <Typography color="primary">Logout</Typography>
+                </a>
               </MenuItem>
             </Menu>
           </div>

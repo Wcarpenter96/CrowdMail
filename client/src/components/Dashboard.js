@@ -1,75 +1,46 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Route } from "react-router-dom";
 
-import SurveyList from "./surveys/SurveyList";
+import SurveysPage from "./surveys/SurveysPage";
+import SurveyPage from "./surveys/SurveyPage";
+import ProfilePage from "./profile/ProfilePage";
+import SettingPage from "./settings/SettingPage";
 import ResponsiveDrawer from "./Drawer";
 import Header from "./Header";
 
-import { Grid, Typography, Divider, IconButton  } from '@material-ui/core';
+import { IconButton } from "@material-ui/core";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import { makeStyles } from "@material-ui/core/styles";
-
-const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
   },
-  drawer: {
-    [theme.breakpoints.up("sm")]: {
-      width: drawerWidth,
-      flexShrink: 0,
-    },
-  },
-  appBar: {
-    [theme.breakpoints.up("sm")]: {
-      width: `calc(100% - ${drawerWidth}px)`,
-      marginLeft: drawerWidth,
-    },
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  // necessary for content to be below app bar
-  toolbar: theme.mixins.toolbar,
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
-    paddingTop: "100px",
-  },
   buttonRight: {
     position: "fixed",
     bottom: 0,
-    right: 0
+    right: 0,
   },
-  greeting: {
-    margin: theme.spacing(2)
-  }
 }));
 
 const Dashboard = () => {
   const classes = useStyles();
 
   return (
-    <div >
+    <div>
       <div className={classes.root}>
         <Header drawer />
         <ResponsiveDrawer />
-        <div className={classes.content}>
-          <Typography variant='h5'>My Surveys</Typography>
-          <Divider variant="middle" className={classes.greeting}/>
-          <Grid color="primary" container spacing={3}>
-            <SurveyList />
-          </Grid>
-        </div>
+        <Route exact path="/surveys" component={SurveysPage} />
+        <Route path="/surveys/:survey_id" component={SurveyPage} />
+        <Route path="/profile" component={ProfilePage} />
+        <Route path="/settings" component={SettingPage} />
       </div>
       <div className={classes.buttonRight}>
         <IconButton>
           <Link to="/surveys/new">
-            <AddCircleIcon style={{ fontSize: 50 }}  color="primary"/>
+            <AddCircleIcon style={{ fontSize: 50 }} color="primary" />
           </Link>
         </IconButton>
       </div>

@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { useEffect } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
-import { connect } from "react-redux";
-import * as actions from "../actions";
+import { fetchUser } from "../actions";
+import { useDispatch, useSelector } from "react-redux";
+
 
 import Landing from "./Landing";
 import Dashboard from "./Dashboard";
@@ -22,21 +22,24 @@ const theme = createMuiTheme({
   }
 });
 
-class App extends Component {
-  componentDidMount() {
-    this.props.fetchUser();
-  }
-  render() {
+const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchUser());
+  },[]);
+  const auth = useSelector((state) => state.auth);
     return (
       <ThemeProvider theme={theme}>
         <BrowserRouter> 
             <Route exact path="/" component={Landing} />
-            <Route exact path="/surveys" component={Dashboard} />
+            <Route exact path="/surveys/" component={Dashboard} />
+            <Route exact path="/surveys/:survey_id" component={Dashboard} />
+            <Route exact path="/profile" component={Dashboard} />
+            <Route exact path="/settings" component={Dashboard} />
             <Route path="/surveys/new" component={SurveyNew} />
         </BrowserRouter>
       </ThemeProvider>
     );
-  }
 }
 
-export default connect(null, actions)(App);
+export default App;

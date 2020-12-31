@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SurveyPage = ({match}) => {
+const SurveysPage = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -30,8 +30,6 @@ const SurveyPage = ({match}) => {
   },[]);
 
   const surveys = useSelector((state) => state.surveys);
-
-  console.log(match.params.survey_id)
 
   return (
     <div className={classes.content}>
@@ -50,4 +48,4 @@ const SurveyPage = ({match}) => {
   );
 };
 
-export default SurveyPage;
+export default SurveysPage;

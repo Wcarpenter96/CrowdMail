@@ -8,7 +8,7 @@ export const fetchUser = () => async (dispatch) => {
   dispatch({ type: FETCH_USER, payload: res.data });
 };
 
-export const fetchSurveys = () => async (dispatch) => {
+export const fetchSurvey = () => async (dispatch) => {
   const res = await axios.get("/api/surveys");
   dispatch({ type: FETCH_SURVEYS, payload: res.data });
 };

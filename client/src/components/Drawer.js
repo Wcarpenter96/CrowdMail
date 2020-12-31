@@ -65,38 +65,48 @@ function ResponsiveDrawer(props) {
       <div className={classes.toolbar} />
       <Divider />
       <List>
-        <ListItem button>
-        <ListItemText>
-            <Typography color="primary" variant="h6">Dashboard</Typography>
-          </ListItemText>
-        </ListItem>
-        <Link to="/surveys/new" style={{padding:"0px"}}>
-        <ListItem button >
-        <ListItemText>
-            <Typography color="primary" >Create New</Typography>
-          </ListItemText>
-        </ListItem>
+        <Link to="/surveys" style={{ padding: "0px" }}>
+          <ListItem button>
+            <ListItemText>
+              <Typography color="primary" variant="h6">
+                Dashboard
+              </Typography>
+            </ListItemText>
+          </ListItem>
+        </Link>
+        <Link to="/surveys/new" style={{ padding: "0px" }}>
+          <ListItem button>
+            <ListItemText>
+              <Typography color="primary">Create New</Typography>
+            </ListItemText>
+          </ListItem>
         </Link>
         <ListItem button>
           <ListItemText>
-            <Typography color="error" >Drafts (coming soon!)</Typography>
+            <Typography color="error">Drafts (coming soon!)</Typography>
           </ListItemText>
         </ListItem>
       </List>
       <Divider />
       <List>
+        <Link to="/profile" style={{ padding: "0px" }}>
+          <ListItem button>
+            <ListItemText>
+              <Typography variant="h6" color="secondary">
+                My Profile
+              </Typography>
+            </ListItemText>
+          </ListItem>
+        </Link>
+        <Link to="/settings" style={{ padding: "0px" }}>
         <ListItem button>
-        <ListItemText>
-            <Typography variant="h6" color="secondary">My Profile</Typography>
-          </ListItemText>
-        </ListItem >
-        <ListItem button >
-        <ListItemText>
+          <ListItemText>
             <Typography color="secondary">Advanced Settings</Typography>
           </ListItemText>
         </ListItem>
+        </Link>
         <ListItem button component="a" href="/api/logout">
-        <ListItemText>
+          <ListItemText>
             <Typography color="secondary">Logout</Typography>
           </ListItemText>
         </ListItem>
