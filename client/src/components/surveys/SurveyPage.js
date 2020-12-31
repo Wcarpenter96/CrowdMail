@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { fetchSurvey } from "../../actions";
-import SurveyCard from "./SurveyCard";
+import SurveyDetail from "./SurveyDetail";
 
-import { Grid, Typography, Divider } from "@material-ui/core";
+import { Fab, Grid, Typography, Divider } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import BackIcon from "@material-ui/icons/ArrowLeftTwoTone";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,33 +21,49 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3),
     paddingTop: "100px",
   },
+  buttonLeft: {
+    position: "fixed",
+    bottom: 0,
+  },
+  margin: {
+    margin: theme.spacing(3),
+  }
 }));
 
-const SurveyPage = ({match}) => {
+const SurveyPage = ({ match }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchSurvey());
-  },[]);
+  }, []);
 
   const surveys = useSelector((state) => state.surveys);
 
-  console.log(match.params.survey_id)
+  const survey_id = match.params.survey_id;
 
   return (
     <div className={classes.content}>
-      <Typography variant="h5">My Surveys</Typography>
+      <Typography variant="h5">Survey Details</Typography>
       <Divider variant="middle" className={classes.greeting} />
       <Grid color="primary" container spacing={3}>
-        {surveys.reverse().map((survey) => {
-          return (
-            <Grid item sm={12} md={6} lg={4} key={survey._id}>
-              <SurveyCard {...survey} />
-            </Grid>
-          );
-        })}
+        {surveys
+          .filter((survey) => survey._id == survey_id)
+          .map((survey) => {
+            return (
+              <div>
+                <SurveyDetail {...survey} />
+              </div>
+            );
+          })}
       </Grid>
+      <div className={classes.buttonLeft}>
+      <Link to="/surveys">
+        <Fab variant="extended" color="secondary" aria-label="back" className={classes.margin}>
+            <BackIcon />Back 
+        </Fab>
+        </Link>
+        </div>
     </div>
   );
 };

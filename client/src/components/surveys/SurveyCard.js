@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 import { Card, CardContent, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
@@ -15,11 +16,10 @@ const SurveyCard = (props) => {
   const [raised, setRaised] = useState(false);
 
     return (
-    <Card
+      <Link to={`surveys/id/${props._id}`}><Card
           className={classes.root}
           onMouseOver={() => setRaised(true)}
           onMouseOut={() => setRaised(false)}
-          onClick={() => console.log(props._id)}
           raised={raised}
         >
           <CardContent>
@@ -42,7 +42,7 @@ const SurveyCard = (props) => {
               No: {props.no}
             </Typography>
           </CardContent>
-        </Card>
+        </Card></Link>
     );
 };
 

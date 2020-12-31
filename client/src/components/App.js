@@ -33,10 +33,10 @@ const App = () => {
         <BrowserRouter> 
             <Route exact path="/" component={Landing} />
             <Route exact path="/surveys/" component={Dashboard} />
-            <Route exact path="/surveys/:survey_id" component={Dashboard} />
+            <Route path="/surveys/id/:survey_id" component={Dashboard} />
             <Route exact path="/profile" component={Dashboard} />
             <Route exact path="/settings" component={Dashboard} />
-            <Route path="/surveys/new" component={SurveyNew} />
+            <Route exact path="/surveys/new" component={SurveyNew} />
         </BrowserRouter>
       </ThemeProvider>
     );
