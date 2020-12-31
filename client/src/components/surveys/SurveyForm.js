@@ -8,8 +8,12 @@ import SurveyField from "./SurveyField";
 import validateEmails from "../../utils/validateEmails";
 import formFields from "./formFields";
 
-class SurveyForm extends Component {
-  renderFields() {
+import { Button, Grid } from "@material-ui/core";
+import BackIcon from "@material-ui/icons/ArrowLeftOutlined";
+import NextIcon from "@material-ui/icons/ArrowRight";
+
+const SurveyForm = (props) => {
+  const renderFields = () => {
     return _.map(formFields, ({ label, name }) => {
       return (
         <Field
@@ -21,23 +25,27 @@ class SurveyForm extends Component {
         />
       );
     });
-  }
-  render() {
-    return (
-      <div>
-        <form onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)}>
-          {this.renderFields()}
-          <Link className="red btn-flat white-text" to="/surveys">
-            Cancel
-          </Link>
-          <button type="submit" className="teal btn-flat right white-text">
-            Next <i className="material-icons right">done</i>
-          </button>
-        </form>
-      </div>
-    );
-  }
-}
+  };
+  return (
+    <div>
+      <form onSubmit={props.handleSubmit(props.onSurveySubmit)}>
+        {renderFields()}
+        <Grid container alignItems="center" justify="space-between">
+        <Grid item>
+        <Link to="/surveys">
+          <Button color="secondary" ><BackIcon/> Cancel</Button>
+        </Link>
+        </Grid>
+        <Grid item>
+        <Button color="primary" type="submit">
+          Next <NextIcon/>
+        </Button>
+        </Grid>
+        </Grid>
+      </form>
+    </div>
+  );
+};
 
 function validate(values) {
   const errors = {};
@@ -49,8 +57,7 @@ function validate(values) {
       errors[name] = "You must provide a value";
     }
   });
-
-  return errors;
+  return errors
 }
 
 export default reduxForm({

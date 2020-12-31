@@ -7,6 +7,20 @@ import * as actions from "../actions";
 import Landing from "./Landing";
 import Dashboard from "./Dashboard";
 import SurveyNew from "./surveys/SurveyNew";
+import palette from '../utils/palette'
+
+import { createMuiTheme, ThemeProvider } from '@material-ui/core'
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: palette.primary
+    },
+    secondary: {
+      main: palette.secondary
+    }
+  }
+});
 
 class App extends Component {
   componentDidMount() {
@@ -14,11 +28,13 @@ class App extends Component {
   }
   render() {
     return (
+      <ThemeProvider theme={theme}>
         <BrowserRouter> 
             <Route exact path="/" component={Landing} />
             <Route exact path="/surveys" component={Dashboard} />
             <Route path="/surveys/new" component={SurveyNew} />
         </BrowserRouter>
+      </ThemeProvider>
     );
   }
 }

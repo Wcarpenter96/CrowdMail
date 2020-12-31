@@ -1,26 +1,50 @@
 import React from "react";
-import colors from '../utils/colors'
+
 import Header from "./Header";
 
+import { Grid, Card, Typography, Button } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+
+const drawerWidth = 240;
+
+const useStyles = makeStyles((theme) => ({
+  content: {
+    marginTop: "100px",
+  },
+}));
+
 const Landing = () => {
+  const classes = useStyles();
+
   return (
-    <div>
-    <Header />
-    <div className="section no-pad-bot" id="index-banner">
-    <div className="container">
-      <br/><br/>
-      <h1 className={`header center ${colors.primary}-text`}>Crowdmail</h1>
-      <div className="row center">
-        <h5 className="header col s12 light">An email-based data annotation SAS provider</h5>
-      </div>
-      <div className="row center">
-        <a href="/auth/google" id="download-button" className={`btn-large waves-effect waves-light ${colors.primary}`}>Get Started</a>
-      </div>
-      <br/><br/>
+    <div >
+      <Header />
+      <Grid
+        className={classes.content}
+        container
+        justify="center"
+        justify="center"
+        alignItems="center"
+        direction="column"
+        spacing={5}
+      >
+        <Grid item>
+          <Typography color="primary" variant="h1">
+            Crowdmail
+          </Typography>
+        </Grid>
+        <Grid item>
+          <Typography color="textPrimary" variant="body1">
+            An email-based data annotation SAS provider
+          </Typography>
+        </Grid>
+        <Grid item>
+          <Card >
+            <Button size="large" color="primary" variant="contained" href="/auth/google">Get Started</Button>
+          </Card>
+        </Grid>
+      </Grid>
     </div>
-  </div>
-  </div>
-  
   );
 };
 

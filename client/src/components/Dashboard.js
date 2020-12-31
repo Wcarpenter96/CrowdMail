@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 import SurveyList from "./surveys/SurveyList";
 import ResponsiveDrawer from "./Drawer";
-import colors from "../utils/colors";
 import Header from "./Header";
 
 import { Grid, Typography, Divider, IconButton  } from '@material-ui/core';
@@ -39,16 +38,12 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
-    paddingTop: "90px",
+    paddingTop: "100px",
   },
   buttonRight: {
     position: "fixed",
     bottom: 0,
     right: 0
-  },
-  addSurvey: {
-    color: colors.primary,
-    fontSize: "50px",
   },
   greeting: {
     margin: theme.spacing(2)
@@ -59,14 +54,14 @@ const Dashboard = () => {
   const classes = useStyles();
 
   return (
-    <div>
+    <div >
       <div className={classes.root}>
         <Header drawer />
         <ResponsiveDrawer />
         <div className={classes.content}>
           <Typography variant='h5'>My Surveys</Typography>
           <Divider variant="middle" className={classes.greeting}/>
-          <Grid container spacing={3}>
+          <Grid color="primary" container spacing={3}>
             <SurveyList />
           </Grid>
         </div>
@@ -74,7 +69,7 @@ const Dashboard = () => {
       <div className={classes.buttonRight}>
         <IconButton>
           <Link to="/surveys/new">
-            <AddCircleIcon className={classes.addSurvey} />
+            <AddCircleIcon style={{ fontSize: 50 }}  color="primary"/>
           </Link>
         </IconButton>
       </div>

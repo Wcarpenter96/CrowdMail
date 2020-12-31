@@ -7,31 +7,54 @@ import { withRouter } from "react-router-dom";
 import formFields from "./formFields";
 import * as actions from "../../actions";
 
+import { Typography, Button, Grid, Divider } from "@material-ui/core";
+import BackIcon from "@material-ui/icons/ArrowLeftOutlined";
+import MailIcon from "@material-ui/icons/Mail";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  divide: {
+    margin: "20px",
+  },
+}));
+
 function SurveyFormReview({ onCancel, formValues, submitSurvey, history }) {
+  const classes = useStyles();
+
   const reviewFields = _.map(formFields, ({ name, label }) => {
     return (
-      <div key={name}>
-        <label>{label}</label>
-        <div>{formValues[name]}</div>
-      </div>
+      <Grid item key={name}>
+        <Typography variant="h6">{label}</Typography>
+        <Typography variant="body1">{formValues[name]}</Typography>
+      </Grid>
     );
   });
   return (
     <div>
-      <h5>Please confirm your entries</h5>
-      {reviewFields}
-      <button
-        className="yellow darken-3 white-text btn-flat"
-        onClick={onCancel}
-      >
-        Back
-      </button>
-      <button
-        className="green btn-flat white-text right"
-        onClick={() => submitSurvey(formValues, history)}
-      >
-        Send Survey <i className="material-icons right">email</i>
-      </button>
+      <Grid container spacing={3} direction="column">
+        <Grid item>
+          <Typography variant="h5">Please confirm your entries:</Typography>
+        </Grid>
+        <Divider className={classes.divide} />
+        {reviewFields}
+        <Divider className={classes.divide} />
+      </Grid>
+
+      <Grid container spacing={3} direction="row" justify="space-between">
+        <Grid item>
+          <Button color="secondary" onClick={onCancel}>
+            <BackIcon /> Back
+          </Button>
+        </Grid>
+        <Grid item>
+          <Button
+            color="primary"
+            onClick={() => submitSurvey(formValues, history)}
+          >
+            Send Survey <i className="material-icons right">email</i>
+          </Button>
+        </Grid>
+      </Grid>
     </div>
   );
 }

@@ -3,6 +3,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
+import Payments from "./Payments";
+import { setMobileOpen } from "../actions";
+
 import {
   AppBar,
   Toolbar,
@@ -15,9 +18,6 @@ import {
 import { AccountCircle } from "@material-ui/icons";
 import MenuIcon from "@material-ui/icons/Menu";
 
-import Payments from "./Payments";
-import colors from "../utils/colors";
-import { setMobileOpen } from "../actions";
 
 const drawerWidth = 240;
 
@@ -29,22 +29,15 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("sm")]: {
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
-    },
-    backgroundColor: colors.secondary,
-  },
-  appBarFull: {
-    background: colors.secondary,
+    }
   },
   menuButton: {
     marginRight: theme.spacing(2),
     marginLeft: theme.spacing(2),
-    color: colors.primary,
   },
-
   title: {
     flexGrow: 1,
-    color: colors.primary,
-  },
+  }
 }));
 
 const Header = (props) => {
@@ -69,48 +62,45 @@ const Header = (props) => {
 
   return (
     <AppBar
-      light
+      color = "white"
       position="fixed"
       className={props.drawer ? classes.appBarDrawer : classes.appBarFull}
-      style={{ background: colors.secondary }}
     >
       <Toolbar>
         {props.drawer && (
           <Hidden smUp implementation="css">
             <IconButton
-              color="inherit"
               aria-label="open drawer"
               edge="start"
               className={classes.menuButton}
               onClick={handleDrawerToggle}
+              color="primary"
             >
               <MenuIcon />
             </IconButton>
           </Hidden>
         )}
-        <Typography variant="h5" className={classes.title}>
-          <Link
+          <Link 
             className={classes.title}
             id="logo-container"
             to={auth ? "/surveys" : "/"}
           >
-            Crowdmail
+            <Typography color="primary" variant="h5" className={classes.title} >Crowdmail</Typography>
           </Link>
-        </Typography>
         {auth && (
           <div>
             <Payments className={classes.menuButton} />
-            <Typography className={classes.menuButton} variant="button">
+            <Typography className={classes.menuButton} color="primary" variant="button">
               Credits: {auth.credits}
             </Typography>
             <IconButton
+              color="primary"
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleMenu}
-              color={colors.primary}
             >
-              <AccountCircle />
+              <AccountCircle fontSize="large" />
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -127,9 +117,9 @@ const Header = (props) => {
               open={open}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}>Profile</MenuItem>
+              <MenuItem onClick={handleClose}><Typography color="textPrimary" >Profile</Typography></MenuItem>
               <MenuItem onClick={handleClose}>
-                <a href="/api/logout">Logout</a>
+                <a href="/api/logout"><Typography color="textPrimary">Logout</Typography></a>
               </MenuItem>
             </Menu>
           </div>
