@@ -15,6 +15,7 @@ https://shielded-sierra-95163.herokuapp.com/
 | Card Number | 4242 4242 4242 4242 |
 | MM / YY | 12/21 |
 | CVC | 123 |
+
 (Read more about Stripe test credit cards [here](https://stripe.com/docs/testing))
 
 4. Click the "+" button on the bottom right or the "Create New" tab in the right drawer
