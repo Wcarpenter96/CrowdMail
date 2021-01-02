@@ -35,7 +35,7 @@ const Landing = () => {
         </Grid>
         <Grid item>
           <Typography color="textPrimary" variant="body1">
-            An email-based data annotation SAS provider
+          A highly customizable self-service survey and analytics provider
           </Typography>
         </Grid>
         <Grid item>

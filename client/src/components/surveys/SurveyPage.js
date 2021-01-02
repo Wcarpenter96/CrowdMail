@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 import { fetchSurvey } from "../../actions";
 import SurveyDetail from "./SurveyDetail";
 
-import { Fab, Grid, Typography, Divider } from "@material-ui/core";
+import { Fab, Grid, Typography, Divider, IconButton } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import BackIcon from "@material-ui/icons/ArrowLeftTwoTone";
+import BackIcon from "@material-ui/icons/KeyboardArrowLeft";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,13 +21,9 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3),
     paddingTop: "100px",
   },
-  buttonLeft: {
-    position: "fixed",
-    bottom: 0,
-  },
   margin: {
     margin: theme.spacing(3),
-  }
+  },
 }));
 
 const SurveyPage = ({ match }) => {
@@ -44,7 +40,14 @@ const SurveyPage = ({ match }) => {
 
   return (
     <div className={classes.content}>
-      <Typography variant="h5">Survey Details</Typography>
+      <Typography variant="h5">
+        <Link to="/surveys">
+          <IconButton>
+            <BackIcon />
+          </IconButton>
+        </Link>
+        Survey Details
+      </Typography>
       <Divider variant="middle" className={classes.greeting} />
       <Grid color="primary" container spacing={3}>
         {surveys
@@ -57,13 +60,6 @@ const SurveyPage = ({ match }) => {
             );
           })}
       </Grid>
-      <div className={classes.buttonLeft}>
-      <Link to="/surveys">
-        <Fab variant="extended" color="secondary" aria-label="back" className={classes.margin}>
-            <BackIcon />Back 
-        </Fab>
-        </Link>
-        </div>
     </div>
   );
 };
