@@ -7,7 +7,16 @@ https://shielded-sierra-95163.herokuapp.com/
 
 1. Log in to the app with your Google Account 
 2. Click the "Add Credits" button
-3. Enter the values below to get 5 email credits
+3. Enter the values below to get 5 email credits and click "Pay $5.00". You should now see "Credits: 5" next to the "Add Credits" button.
+
+| Field | Value |
+| ----------- | ----------- |
+| Email | test@test.com |
+| Card Number | 4242 4242 4242 4242 |
+| MM / YY | 12/21 |
+| CVC | 123 |
+(Read more about Stripe test credit cards [here](https://stripe.com/docs/testing))
+
 4. Click the "+" button on the bottom right or the "Create New" tab in the right drawer
 5. Enter your survey title, subject, body, and recipient list. The recipient list should be a list of emails separated by commas.
 6. Click "Next" and review your information. 
