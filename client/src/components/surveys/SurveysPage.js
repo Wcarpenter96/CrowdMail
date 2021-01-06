@@ -19,6 +19,9 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3),
     paddingTop: "100px",
   },
+  margin: {
+    padding: "50px",
+  },
 }));
 
 const SurveysPage = () => {
@@ -27,25 +30,39 @@ const SurveysPage = () => {
 
   useEffect(() => {
     dispatch(fetchSurvey());
-  },[]);
+  }, []);
 
   const surveys = useSelector((state) => state.surveys);
 
-  return (
-    <div className={classes.content}>
-      <Typography variant="h5">My Surveys</Typography>
-      <Divider variant="middle" className={classes.greeting} />
-      <Grid color="primary" container spacing={3}>
-        {surveys.reverse().map((survey) => {
-          return (
-            <Grid item sm={12} md={6} lg={4} key={survey._id}>
-              <SurveyCard {...survey} />
-            </Grid>
-          );
-        })}
-      </Grid>
-    </div>
-  );
+  if (surveys.length > 0) {
+    return (
+      <div className={classes.content}>
+        <Typography variant="h5">My Surveys</Typography>
+        <Divider variant="middle" className={classes.greeting} />
+        <Grid color="primary" container spacing={3}>
+          {surveys.reverse().map((survey) => {
+            return (
+              <Grid item sm={12} md={6} lg={4} key={survey._id}>
+                <SurveyCard {...survey} />
+              </Grid>
+            );
+          })}
+        </Grid>
+      </div>
+    );
+  } else {
+    return (
+      <div className={classes.content}>
+        <Grid container className={classes.margin}>
+          <Grid item>
+            <Typography variant="h2" color="primary">
+              Looks like you don't have any surveys yet.
+            </Typography>
+          </Grid>
+        </Grid>
+      </div>
+    );
+  }
 };
 
 export default SurveysPage;
